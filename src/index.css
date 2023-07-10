@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* transition: 0.3s ease !important; */
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: 800;
+}
+
+
+.appFooter {
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0 40px;
+    flex-wrap: wrap;
+}
+
+.appNav {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    width: 100%;
+    padding: 10px 40px;
+    z-index: 9;
+}
+
+.customPaper {
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+}
+
+.ladyWithImg {
+    width: 70%;
+}
+
+.heroBtn {
+    padding: 10px 20px !important;
+    background: #1a2958 !important;
+    color: #fff !important;
+    border-radius: 25px !important;
+    margin-top: 15px !important;
+}
+
+input {
+    padding: 5px;
+    border: 1px solid #000;
+}
+
+.addStory {
+    position: fixed !important;
+    background: #1a2958 !important;
+    right: 45px !important;
+    bottom: 35px !important;
+    border-radius: 50% !important;
+    height: 60px !important;
+    width: 60px !important;
+    padding: 10px !important;
+}
+
+textarea.textarea {
+    background: black;
+    color: white;
+}
+
+textarea.storytext {
+    width: 100%;
+    padding: 10px;
+    min-height: 150px;
+    border: 1px solid #000;
+    /* border: 1px solid #fff; */
+}
+
+.profileImg img {
+    border-radius: 50%;
+}
+
+.profileImg {
+    width: 50px;
+    height: 50px;
+}
+
+.storyBox {
+    max-width: 550px !important;
+    /* background: red !important; */
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 10px;
+}
+
+.logo2 {
+    visibility: hidden;
+}
+
+@media (max-width: 768px) {
+    .ladyWithImg {
+        width: 50%;
+    }
+
+    .appNav {
+        padding: 10px 16px;
+    }
+
+    .appFooter {
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 495px) {
+    .logo {
+        display: none;
+    }
+
+    .logo2 {
+        visibility: visible;
+    }
+}
