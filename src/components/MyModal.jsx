@@ -7,6 +7,7 @@ import { addDoc, collection, doc, getDoc, getDocs, query, setDoc, where, } from 
 import { db } from "../config/firebase"
 import { AuthContext } from '../AuthProvider';
 import { useNavigate } from 'react-router-dom';
+import { useDate } from '../hooks/useDate';
 
 
 const style = {
@@ -22,20 +23,8 @@ const style = {
     p: 4,
     display: "grid",
 };
-const MyModal = ({ open, handleClose }) => {
-    const date = new Date();
-
-    const options = {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric',
-        hour12: true
-    };
-
-    const formattedDate = new Intl.DateTimeFormat('en-US', options).format(date);
-
+const MyModal = ({ openModal, toggleModal }) => {
+    const [formattedDate] = useDate();
 
     const navigate = useNavigate();
     const user = useContext(AuthContext);
@@ -80,6 +69,7 @@ const MyModal = ({ open, handleClose }) => {
 
             handleClose();
             reset();
+            navigate(0);
             navigate('/');
             alert('Post created successfully');
         } catch (error) {
@@ -97,8 +87,8 @@ const MyModal = ({ open, handleClose }) => {
     return (
         <Modal
             keepMounted
-            open={open}
-            onClose={handleClose}
+            open={openModal}
+            onClose={toggleModal}
             aria-labelledby="keep-mounted-modal-title"
             aria-describedby="keep-mounted-modal-description"
         >
@@ -107,7 +97,7 @@ const MyModal = ({ open, handleClose }) => {
                     <Typography id="keep-mounted-modal-title" variant="h6" component="h2">
                         Add Story
                     </Typography>
-                    <Button onClick={handleClose}> X</Button>
+                    <Button onClick={toggleModal}> X</Button>
                 </Box>
                 <form className="w-full grid gap-2" onSubmit={handleSubmit(onCreateStory)}>
                     <textarea

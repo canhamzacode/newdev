@@ -7,21 +7,12 @@ import { addDoc, collection } from "firebase/firestore"
 import { db } from "../config/firebase"
 import { AuthContext } from '../AuthProvider';
 import { useNavigate } from 'react-router-dom';
+import { useDate } from '../hooks/useDate'
 
 const AddComment = ({ storyId }) => {
     const { user } = useContext(AuthContext);
-    const date = new Date();
 
-    const options = {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric',
-        hour12: true
-    };
-
-    const formattedDate = new Intl.DateTimeFormat('en-US', options).format(date);
+    const [formattedDate] = useDate();
 
     const schema = yup.object().shape({
         content: yup.string().required("This field is required"),
@@ -38,8 +29,8 @@ const AddComment = ({ storyId }) => {
     const navigate = useNavigate();
 
     const onCreateComment = async (data) => {
-        setIsLoading(true); // Set loading state to true
         try {
+            setIsLoading(true); // Set loading state to true
             await addDoc(commentRef, {
                 ...data,
                 authorId: user?.userId,
@@ -47,6 +38,7 @@ const AddComment = ({ storyId }) => {
                 postId: storyId
             });
             reset();
+            navigate(0);
         } catch (error) {
             console.error("Error creating comment:", error);
         } finally {

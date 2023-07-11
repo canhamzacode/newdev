@@ -10,34 +10,12 @@ import { useTheme } from '@mui/material/styles';
 import { collection, doc, getDoc } from 'firebase/firestore';
 import { db } from '../config/firebase';
 import { Link } from 'react-router-dom';
+import useUserById from '../hooks/useGetUById';
 
 const Story = ({ story }) => {
     const authorId = story?.userId;
-    const usersRef = collection(db, 'users');
-    const [myUserDb, setMyUserDb] = useState(null);
-    if (myUserDb) {
-        const { username } = myUserDb;
-    }
-    // console.log(myUserDb);
-    const getUserById = async (userId) => {
-        try {
-            const userDoc = await getDoc(doc(usersRef, userId));
+    const myUserDb = useUserById(authorId)
 
-            if (userDoc.exists()) {
-                setMyUserDb(userDoc.data());
-            } else {
-                setMyUserDb(null);
-            }
-        } catch (error) {
-            console.error('Error getting user:', error);
-            setMyUserDb(null);
-        }
-    };
-
-
-    useEffect(() => {
-        getUserById(authorId);
-    }, [authorId]);
 
     const theme = useTheme();
 

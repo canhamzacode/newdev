@@ -9,7 +9,7 @@ import { auth } from '../config/firebase';
 import { useAuthState } from "react-firebase-hooks/auth"
 import { AuthContext } from '../AuthProvider';
 
-const NavBar = ({ handleOpenNav }) => {
+const NavBar = ({ openNav, toggle }) => {
     const theme = useTheme();
     const { user } = useContext(AuthContext);
     return (
@@ -88,7 +88,7 @@ const NavBar = ({ handleOpenNav }) => {
                     </Button>
                 </Link>}
                 {/* {user && <Avatar />} */}
-                {user && <div className="profileImg" onClick={handleOpenNav}>
+                {user && <div className="profileImg" onClick={toggle}>
                     <img src={user?.profileImage || ""} alt="profile" />
                 </div>}
             </Stack>

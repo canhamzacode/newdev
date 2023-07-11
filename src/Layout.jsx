@@ -10,37 +10,29 @@ import { ThemeContext } from './ThemeProvider'
 import { useTheme } from '@mui/material/styles';
 import { AuthContext } from './AuthProvider';
 import EditProfileModal from './components/EditProfileModal';
+import { useToggle } from './hooks/useToggle';
+import { useDate } from './hooks/useDate';
 
 const Layout = () => {
-    const theme = useTheme();
     const { user } = useContext(AuthContext);
-
-
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-
-
-    const [openNav, setOpenNav] = useState(false);
-    const handleOpenNav = () => setOpenNav(true);
-    const handleCloseNav = () => setOpenNav(false);
-
+    const [openNav, toggle] = useToggle();
+    const [openModal, toggleModal] = useToggle();
+    const theme = useTheme();
     return (
         <Box className="p-4" sx={{
             background: theme.palette.primary.main,
             color: theme.palette.text.main,
             minHeight: "100vh",
         }} >
-            <NavBar handleOpenNav={handleOpenNav} />
+            <NavBar openNav={openNav} toggle={toggle} />
             <br />
             <br />
             <Outlet />
             <br />
             <br />
-            <Footer handleOpen={handleOpen} />
-            <MyModal handleClose={handleClose} handleOpen={handleOpen} open={open} />
-            <NavModal handleCloseNav={handleCloseNav} handleOpenNav={handleOpenNav} openNav={openNav} />
-
+            <Footer handleOpen={toggleModal} />
+            <MyModal toggleModal={toggleModal} openModal={openModal} />
+            <NavModal openNav={openNav} toggle={toggle} />
             {user && <Button onClick={handleOpen} className='addStory' sx={{ display: { xs: "none", md: "flex" } }}>
                 <AddIcon sx={{ color: "#fff" }} />
             </Button>}

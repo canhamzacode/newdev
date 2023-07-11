@@ -6,31 +6,15 @@ import { useTheme } from '@mui/material/styles';
 import { collection, doc, getDoc } from 'firebase/firestore';
 import { db } from '../config/firebase';
 import { Link } from 'react-router-dom';
-
+import useUserById from '../hooks/useGetUById';
 
 const Comment = ({ comment }) => {
     // console.log(comment);
     const authorId = comment?.authorId;
-    const [myUserDb, setMyUserDb] = useState(null);
     const usersRef = collection(db, 'users');
 
-    const getUserById = async (userId) => {
-        try {
-            const userDoc = await getDoc(doc(usersRef, userId));
+    const myUserDb = useUserById(userId);
 
-            if (userDoc.exists()) {
-                setMyUserDb(userDoc.data());
-            } else {
-                setMyUserDb(null);
-            }
-        } catch (error) {
-            console.error('Error getting user:', error);
-            setMyUserDb(null);
-        }
-    };
-    useEffect(() => {
-        getUserById(authorId);
-    }, [authorId]);
     const theme = useTheme();
     return (
         <Card sx={{

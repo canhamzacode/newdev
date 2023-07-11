@@ -14,11 +14,9 @@ const CreateArticle = () => {
     const navigate = useNavigate();
 
     if (user?.userId != import.meta.env.VITE_API_ADMIN) {
-        // alert("You are not authorized to access this page.")
-        console.log(import.meta.env.VITE_API_ADMIN);
         navigate("/");
     }
-    // if()
+
     const [imageUpload, setImageUpload] = useState(null);
     const [title, setTitle] = useState('');
     const [summary, setSummary] = useState('');

@@ -3,13 +3,11 @@ import { Avatar, Box, Button, Modal, Stack, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useTheme } from '@emotion/react';
 import { ThemeContext } from '../ThemeProvider'
-import { signOut } from "firebase/auth"
-import { auth } from '../config/firebase'
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider';
 
 
-const NavModal = ({ handleCloseNav, handleOpenNav, openNav }) => {
+const NavModal = ({ toggle, openNav }) => {
     const { user, logout } = useContext(AuthContext);
 
     const navigate = useNavigate();
@@ -36,7 +34,7 @@ const NavModal = ({ handleCloseNav, handleOpenNav, openNav }) => {
         <Modal
             keepMounted
             open={openNav}
-            onClose={handleCloseNav}
+            onClose={toggle}
             aria-labelledby="keep-mounted-modal-title"
             aria-describedby="keep-mounted-modal-description"
         >
@@ -51,7 +49,7 @@ const NavModal = ({ handleCloseNav, handleOpenNav, openNav }) => {
                             <img src={user?.profileImage || ""} alt="profile" />
                         </div>}
                         <Box >
-                            <Link to={`/${user?.username}`} onClick={handleCloseNav}>
+                            <Link to={`/${user?.username}`} onClick={toggle}>
                                 <Typography variant='h6'>
                                     {user?.username}
                                 </Typography>
@@ -64,14 +62,14 @@ const NavModal = ({ handleCloseNav, handleOpenNav, openNav }) => {
                     <hr />
                     <Stack sx={{ width: "100%", padding: "15px 25px", display: "grid", gap: "10px" }} >
                         <Box>
-                            <Link to={`/${user?.username}`} onClick={handleCloseNav}>
+                            <Link to={`/${user?.username}`} onClick={toggle}>
                                 <Typography variant='p'>
                                     Public Profile
                                 </Typography>
                             </Link>
                         </Box>
                         <Box>
-                            <Link to="/dashboard" onClick={handleCloseNav}>
+                            <Link to="/dashboard" onClick={toggle}>
                                 <Typography variant='p'>
                                     Dashboard
                                 </Typography>
@@ -81,21 +79,21 @@ const NavModal = ({ handleCloseNav, handleOpenNav, openNav }) => {
                     <hr />
                     <Stack sx={{ width: "100%", padding: "15px 25px", display: "grid", gap: "10px" }} >
                         <Box>
-                            <Link to="/playground" onClick={handleCloseNav}>
+                            <Link to="/playground" onClick={toggle}>
                                 <Typography variant='p'>
                                     Plaground
                                 </Typography>
                             </Link>
                         </Box>
                         <Box>
-                            <Link to="/devguide" onClick={handleCloseNav}>
+                            <Link to="/devguide" onClick={toggle}>
                                 <Typography variant='p'>
                                     Dev Guide
                                 </Typography>
                             </Link>
                         </Box>
                         <Box>
-                            <Link to="/resources" onClick={handleCloseNav}>
+                            <Link to="/resources" onClick={toggle}>
                                 <Typography variant='p'>
                                     Resources
                                 </Typography>
@@ -105,7 +103,7 @@ const NavModal = ({ handleCloseNav, handleOpenNav, openNav }) => {
                     <hr />
                     <Stack sx={{ width: "100%", padding: "15px 25px", display: "grid", gap: "10px" }} >
                         <Box>
-                            <Link to="/membership" onClick={handleCloseNav}>
+                            <Link to="/membership" onClick={toggle}>
                                 <Typography variant='p'>
                                     Membership
                                 </Typography>
@@ -115,7 +113,7 @@ const NavModal = ({ handleCloseNav, handleOpenNav, openNav }) => {
                     <hr />
                     <Stack sx={{ width: "100%", padding: "15px 25px", display: "grid", gap: "10px" }} >
                         <Box>
-                            <Link to="/blog" onClick={handleCloseNav}>
+                            <Link to="/blog" onClick={toggle}>
                                 <Typography variant='p'>
                                     Blog
                                 </Typography>
@@ -129,7 +127,7 @@ const NavModal = ({ handleCloseNav, handleOpenNav, openNav }) => {
                             </Link> */}
                         </Box>
                         <Box onClick={toggleTheme} >
-                            <Link onClick={handleCloseNav}>
+                            <Link onClick={toggle}>
                                 <Typography variant='p' >
                                     Change Theme
                                 </Typography>

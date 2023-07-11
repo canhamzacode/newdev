@@ -40,7 +40,7 @@ const Stories = () => {
 
     useEffect(() => {
         getAllStories();
-    }, [stories]);
+    }, []);
 
     return (
         <Box

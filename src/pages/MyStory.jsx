@@ -52,7 +52,7 @@ const MyStory = () => {
     useEffect(() => {
         getStoryById(id);
         getCommentsById(id);
-    }, [id, story]);
+    }, []);
     return (
         <Box sx={{
             width: "100%",
