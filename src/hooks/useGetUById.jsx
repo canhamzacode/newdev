@@ -23,7 +23,7 @@ const useUserById = (userId) => {
         };
 
         fetchUser();
-    }, [userId, usersRef]);
+    }, []);
 
     return myUserDb;
 };
