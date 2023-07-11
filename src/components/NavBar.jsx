@@ -12,6 +12,7 @@ import { AuthContext } from '../AuthProvider';
 const NavBar = ({ openNav, toggle }) => {
     const theme = useTheme();
     const { user } = useContext(AuthContext);
+    console.log(user);
     return (
         <Stack
             direction={"row"}

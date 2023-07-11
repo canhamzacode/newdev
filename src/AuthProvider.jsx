@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }) => {
         };
 
         fetchUser();
-    }, [user]);
+    }, [user, a]);
 
 
     const authContextValue = {

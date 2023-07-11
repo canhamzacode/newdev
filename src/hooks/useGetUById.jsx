@@ -22,8 +22,12 @@ const useUserById = (userId) => {
             }
         };
 
-        fetchUser();
-    }, []);
+        if (userId) {
+            fetchUser();
+        } else {
+            setMyUserDb(null);
+        }
+    }, [userId]);
 
     return myUserDb;
 };

@@ -45,7 +45,7 @@ const NavModal = ({ toggle, openNav }) => {
                 }}>
                     <Stack direction={"row"} sx={{ width: "100%", padding: "15px 25px", gap: "20px", display: "flex", alignItems: "center" }}>
                         {/* <Avatar /> */}
-                        {user && <div className="profileImg" onClick={handleOpenNav}>
+                        {user && <div className="profileImg" onClick={toggle}>
                             <img src={user?.profileImage || ""} alt="profile" />
                         </div>}
                         <Box >

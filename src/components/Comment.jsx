@@ -12,9 +12,13 @@ const Comment = ({ comment }) => {
     // console.log(comment);
     const authorId = comment?.authorId;
     const usersRef = collection(db, 'users');
+    const [myUserDb, setMyUserDb] = useState(null)
 
-    const myUserDb = useUserById(userId);
-
+    const authorInfo = useUserById(authorId);
+    useEffect(() => {
+        setMyUserDb(authorInfo)
+        console.log(myUserDb);
+    })
     const theme = useTheme();
     return (
         <Card sx={{

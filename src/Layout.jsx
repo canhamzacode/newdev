@@ -33,7 +33,7 @@ const Layout = () => {
             <Footer handleOpen={toggleModal} />
             <MyModal toggleModal={toggleModal} openModal={openModal} />
             <NavModal openNav={openNav} toggle={toggle} />
-            {user && <Button onClick={handleOpen} className='addStory' sx={{ display: { xs: "none", md: "flex" } }}>
+            {user && <Button onClick={toggleModal} className='addStory' sx={{ display: { xs: "none", md: "flex" } }}>
                 <AddIcon sx={{ color: "#fff" }} />
             </Button>}
         </Box>

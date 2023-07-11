@@ -13,7 +13,6 @@ const Auth = ({ loading }) => {
     const navigate = useNavigate();
     const [user] = useAuthState(auth);
     const { setMyUserDb } = useContext(AuthContext);
-
     const usersRef = collection(db, 'users');
 
     const checkUserExistence = async (userId) => {
