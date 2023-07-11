@@ -36,7 +36,7 @@ const LandingPage = () => {
                     <Typography variant='h2' sx={{
                         color: theme.palette.plainDark.main
                     }}>
-                        NewDev
+                        Tech Tribe
                     </Typography>
                     <Typography variant='p' sx={{
                         fontSize: "25px",
@@ -63,7 +63,9 @@ const LandingPage = () => {
                         width: { xs: "80%", sm: "40%" },
                         marginX: "auto"
                     }}>
-                        See More Articles
+                        <Link to={"/blog"} className='flex items-center w-ful'>
+                            See More Articles
+                        </Link>
                     </Button>
                 </Box>
                 <Box sx={{ width: "100%", display: "flex", alignItems: "center", flexDirection: "column" }}>

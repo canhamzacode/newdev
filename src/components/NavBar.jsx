@@ -12,7 +12,6 @@ import { AuthContext } from '../AuthProvider';
 const NavBar = ({ openNav, toggle }) => {
     const theme = useTheme();
     const { user } = useContext(AuthContext);
-    console.log(user);
     return (
         <Stack
             direction={"row"}
@@ -31,7 +30,7 @@ const NavBar = ({ openNav, toggle }) => {
                 color: theme.palette.plainDark.main,
             }} className="logo" >
                 <Link to={"/"} >
-                    NewDev
+                    Tech Tribe
                 </Link>
             </Box>
             <Box sx={{
@@ -40,7 +39,7 @@ const NavBar = ({ openNav, toggle }) => {
                 color: theme.palette.plainDark.main,
             }} className="logo2" >
                 <Link to={"/"} >
-                    N
+                    TT
                 </Link>
             </Box>
             <Stack direction={"row"} gap={2} alignItems={"center"} sx={{

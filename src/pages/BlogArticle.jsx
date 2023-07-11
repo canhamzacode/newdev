@@ -1,62 +1,77 @@
 import { Box, Stack, Typography } from '@mui/material'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Blog from '../components/Blog'
 import ProfileCard from '../components/ProfileCard'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+import { collection, doc, getDoc } from 'firebase/firestore'
+import { db } from '../config/firebase'
+import Blogs from './Blogs'
+import ReactHtmlParser from 'react-html-parser';
+import { useTheme } from '@emotion/react'
 
 const BlogArticle = () => {
+    const theme = useTheme();
+    const { id } = useParams();
+    console.log(id);
+    const [article, setArticle] = useState(null);
+
+    const articleRef = collection(db, 'articles');
+    const getArticleById = async (articleId) => {
+        try {
+            const storyDoc = await getDoc(doc(articleRef, articleId));
+
+            if (storyDoc.exists()) {
+                setArticle(storyDoc.data());
+            } else {
+                setArticle(null);
+            }
+        } catch (error) {
+            console.error('Error getting story:', error);
+            setArticle(null);
+        }
+    };
+
+    useEffect(() => {
+        getArticleById(id);
+        console.log(article);
+    }, []);
     return (
         <Box className="pt-14" width="100%">
             <Stack direction={'row'}
-                sx={{ display: "flex", width: "100%", justifyContent: "space-between", padding: "20px", alignItems: "start" }}
+                sx={{
+                    display: "flex", width: "100%", justifyContent: "space-between", padding: "20px", alignItems: "start",
+                    color: theme.palette.plainDark.main,
+                }}
             >
-                <Box sx={{ padding: "35px", width: "35%", display: { md: "flex", xs: "none" }, flexDirection: "column", gap: "10px" }}>
+                {/* <Box sx={{ padding: "35px", width: "35%", display: { md: "flex", xs: "none" }, flexDirection: "column", gap: "10px" }}>
                     <ProfileCard />
                     <Typography variant='h5'>
                         Table Of Contents
                     </Typography>
                     <Stack sx={{ display: "grid", gap: "10px" }}>
-                        <Box sx={{ background: "grey" }}>
-                            <Link to="">
-                                <Typography variant='h6'>- Introduction</Typography>
-                            </Link>
+                        <Box sx={{ background: "grey", padding: "5px 10px", borderRadius: "8px", cursor: "pointer" }}>
+                            <Typography variant='h6' sx={{ color: "#fff" }}>- Introduction</Typography>
                         </Box>
-                        <Box sx={{ background: "grey" }}>
-                            <Link to="">
-                                <Typography variant='h6'>- Introduction</Typography>
-                            </Link>
+                        <Box sx={{ background: "grey", padding: "5px 10px", borderRadius: "8px", cursor: "pointer" }}>
+                            <Typography variant='h6' sx={{ color: "#fff" }}>- Introduction</Typography>
                         </Box>
-                        <Box sx={{ background: "grey" }}>
-                            <Link to="">
-                                <Typography variant='h6'>- Introduction</Typography>
-                            </Link>
+                        <Box sx={{ background: "grey", padding: "5px 10px", borderRadius: "8px", cursor: "pointer" }}>
+                            <Typography variant='h6' sx={{ color: "#fff" }}>- Introduction</Typography>
                         </Box>
                     </Stack>
-                </Box>
-                <Box sx={{ width: { xs: "100%", md: "60%" } }}>
-                    <Typography variant='h3'>
-                        IP Addresses - The Street Addresses of the Internet
+                </Box> */}
+                <Box sx={{ width: { xs: "100%", md: "100%" } }}>
+                    <Typography variant='h3' sx={{ textAlign: "center", borderBottom: "1px solid black", borderRadius: "8px" }}>
+                        {article?.title}
                     </Typography>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim omnis dolorem atque maiores, accusamus eum sunt illo laudantium impedit quibusdam accusantium tempore sapiente et quae minus non corrupti, commodi ullam.
-                    Veniam distinctio sequi natus eveniet libero accusantium voluptatibus quis, illum nisi esse possimus voluptates vitae dignissimos enim repudiandae rem temporibus a repellat! Saepe ullam nisi quidem dolores corporis quisquam ipsa.
-                    Nisi, enim quod quidem reiciendis accusamus, deserunt vero obcaecati aspernatur commodi error animi! Numquam ut eius odio vel porro assumenda quae inventore odit obcaecati sequi mollitia quidem quia, aliquam natus.
-                    Animi repudiandae ipsum hic doloremque est, facilis excepturi fugiat nostrum dolores soluta incidunt ipsa mollitia repellat cumque! Harum, et? Sapiente facere ratione dolorem placeat deserunt aliquam dignissimos similique harum inventore.
-                    Ipsam distinctio quaerat quia omnis, non nobis ad aperiam totam sequi, sunt molestias recusandae quam voluptatem aliquam explicabo voluptates quidem eius saepe exercitationem quis asperiores placeat? Nihil aut in illum.
-                    Animi repudiandae ipsum hic doloremque est, facilis excepturi fugiat nostrum dolores soluta incidunt ipsa mollitia repellat cumque! Harum, et? Sapiente facere ratione dolorem placeat deserunt aliquam dignissimos similique harum inventore.
-                    Ipsam distinctio quaerat quia omnis, non nobis ad aperiam totam sequi, sunt molestias recusandae quam voluptatem aliquam explicabo voluptates quidem eius saepe exercitationem quis asperiores placeat? Nihil aut in illum.
-                    Animscabo voluptates quidem eius saepe exercitationem quis asperiores placeat? Nihil aut in illum.
-                    Perspiciatis delectus est excepturi illum esse animi corrupti sapiente placeat, itaque maiores saepe ad id voluptates ratione facere assumenda dolores quo, nihil hic distinctio nam expedita sit. Labore, quasi cum.
-                    Nostrum repudiandae molestiae exercitationem, pariatur saepe praesentium labore at vel, maiores ea minima quidem, id adipisci veritatis tempore esse ab eaque nihil. Rem tempora quod numquam magnam vitae temporibus blanditiis.
+                    {/* <hr className='p-1 bg-black' /> */}
+                    <Typography variant='h5' sx={{ textAlign: "center" }}>
+                        Summary: {article?.summary}
+                    </Typography>
+                    {ReactHtmlParser(article?.content)}
                 </Box>
             </Stack>
-            <Stack direction={'row'}
-                sx={{ display: "flex", justifyContent: "center", alignItems: "center", flexWrap: "wrap", width: "100%", gap: "20px" }}
-            >
-                <Blog />
-                <Blog />
-                <Blog />
-                <Blog />
-            </Stack>
+            <Blogs />
         </Box>
     )
 }

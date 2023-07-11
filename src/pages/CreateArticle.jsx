@@ -12,15 +12,17 @@ import { AuthContext } from '../AuthProvider';
 const CreateArticle = () => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
-
-    if (user?.userId != import.meta.env.VITE_API_ADMIN) {
-        navigate("/");
-    }
-
     const [imageUpload, setImageUpload] = useState(null);
     const [title, setTitle] = useState('');
     const [summary, setSummary] = useState('');
     const [content, setContent] = useState('');
+    const [userDataLoaded, setUserDataLoaded] = useState(false); // Track user data loading
+
+    useEffect(() => {
+        if (user && user.userId === import.meta.env.VITE_API_ADMIN) {
+            setUserDataLoaded(true);
+        }
+    }, [user]);
 
     const uploadImage = async () => {
         if (imageUpload === null) return;
@@ -56,6 +58,7 @@ const CreateArticle = () => {
             setContent('');
 
             alert('Post created successfully');
+            navigate("/");
         } catch (error) {
             console.error('Error creating post:', error);
             alert('Failed to create post');
@@ -66,6 +69,16 @@ const CreateArticle = () => {
         event.preventDefault();
         uploadImage();
     };
+
+    // Check if user data is loaded before rendering
+    if (!userDataLoaded) {
+        return null; // or return a loading indicator, redirect, or any other desired behavior
+    }
+
+    // Check if user ID matches the one in the environment
+    if (user?.userId !== import.meta.env.VITE_API_ADMIN) {
+        navigate('/');
+    }
 
     return (
         <Box sx={{ marginTop: '40px' }}>
@@ -85,7 +98,10 @@ const CreateArticle = () => {
                     />
                     <input type="file" onChange={(e) => setImageUpload(e.target.files[0])} />
                     <ReactQuill value={content} onChange={setContent} />
-                    <button style={{ marginTop: '5px', background: "grey", padding: "10px 0", borderRadius: "8px" }} type="submit">
+                    <button
+                        style={{ marginTop: '5px', background: 'grey', padding: '10px 0', borderRadius: '8px' }}
+                        type="submit"
+                    >
                         Create Post
                     </button>
                 </Stack>

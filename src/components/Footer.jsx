@@ -14,7 +14,6 @@ import { useNavigate } from 'react-router-dom';
 
 const Footer = ({ handleOpen }) => {
     const { user } = useContext(AuthContext);
-    console.log(user);
     const navigate = useNavigate();
     const paperAlign = {
         alignItems: "center",
@@ -56,18 +55,12 @@ const Footer = ({ handleOpen }) => {
                         </Typography>
                     </div>
                 </Link>
-                <div style={paperAlign} onClick={handleOpen}>
+                <div style={paperAlign} onClick={user ? handleOpen : getAuthenticated}>
                     <AddBoxIcon />
                     <Typography fontSize="10px">
                         Add Story
                     </Typography>
                 </div>
-                {/* <div style={paperAlign} onClick={user ? handleOpen : getAuthenticated}>
-                    <AddBoxIcon />
-                    <Typography fontSize="10px">
-                        Add Story
-                    </Typography>
-                </div> */}
                 <Link>
                     <div style={paperAlign}>
                         <CloudDownloadIcon />

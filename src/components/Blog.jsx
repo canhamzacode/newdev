@@ -6,23 +6,24 @@ import thumbnail from "../assets/image/thumbnail.webp"
 import { useTheme } from '@emotion/react';
 import { ThemeContext } from '../ThemeProvider'
 
-const Blog = () => {
+const Blog = ({ article }) => {
     const theme = useTheme();
     return (
         <Card sx={{
             maxWidth: 345,
+            width: "100%",
             background: theme.palette.primary.main,
             color: theme.palette.plainDark.main
         }}>
             <CardMedia
                 sx={{ height: 200, objectFit: 'cover' }}
-                image={thumbnail}
-                title="green iguana"
+                image={article?.imageUrl}
+                title={article?.title}
             />
             <CardContent>
-                <Link to="/" className='text-center'>
+                <Link to={`/blog/${article?.id}`} className='text-center'>
                     <Typography variant="h5">
-                        How The Internet Works: An Exhaustive Guide For Absolute Beginners
+                        {article?.title}
                     </Typography>
                 </Link>
             </CardContent>
@@ -34,11 +35,6 @@ const Blog = () => {
                 }}>
                     11 minutes read
                 </Button>
-                {/* <Button size="small" sx={{
-                    color: theme.palette.plainDark.main
-                }}>
-                    <FavoriteBorderIcon />
-                </Button> */}
             </CardActions>
         </Card>
     )
