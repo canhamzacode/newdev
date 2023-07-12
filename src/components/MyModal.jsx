@@ -67,7 +67,7 @@ const MyModal = ({ openModal, toggleModal }) => {
 
             await setDoc(userRef, updatedCount, { merge: true });
 
-            handleClose();
+            toggleModal();
             reset();
             navigate(0);
             navigate('/');
