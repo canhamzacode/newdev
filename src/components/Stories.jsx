@@ -23,24 +23,18 @@ const Stories = () => {
 
             const stories = [];
             storiesSnapshot.forEach((doc) => {
-                const storyData = { id: doc.id, ...doc.data() };
-                stories.push(storyData);
+                const { storyData, ...data } = doc.data();
+                const story = { id: doc.id, ...storyData, ...data };
+                stories.push(story);
             });
 
-            // Sort the stories in descending order based on the date
-            const storiesWithParsedDate = stories.map(story => {
-                const parsedDate = new Date(story.date);
-                return { ...story, parsedDate };
-            });
 
-            const sortedStories = storiesWithParsedDate.sort((a, b) => b.parsedDate - a.parsedDate);
-
-
-            setStories(sortedStories);
+            setStories(stories);
         } catch (error) {
             console.error('Error fetching stories:', error);
         }
     };
+
 
     useEffect(() => {
         getAllStories();
