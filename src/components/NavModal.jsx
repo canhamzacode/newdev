@@ -13,7 +13,7 @@ const NavModal = ({ toggle, openNav }) => {
     const navigate = useNavigate();
     const theme = useTheme();
     const signUserOut = async () => {
-        handleCloseNav();
+        toggle();
         logout();
         navigate("/");
     }
