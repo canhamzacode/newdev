@@ -12,7 +12,6 @@ import { useTheme } from '@emotion/react'
 const BlogArticle = () => {
     const theme = useTheme();
     const { id } = useParams();
-    console.log(id);
     const [article, setArticle] = useState(null);
 
     const articleRef = collection(db, 'articles');
@@ -33,7 +32,6 @@ const BlogArticle = () => {
 
     useEffect(() => {
         getArticleById(id);
-        console.log(article);
     }, []);
     return (
         <Box className="pt-14" width="100%">
@@ -41,6 +39,7 @@ const BlogArticle = () => {
                 sx={{
                     display: "flex", width: "100%", justifyContent: "space-between", padding: "20px", alignItems: "start",
                     color: theme.palette.plainDark.main,
+                    overflowX: "auto"
                 }}
             >
                 {/* <Box sx={{ padding: "35px", width: "35%", display: { md: "flex", xs: "none" }, flexDirection: "column", gap: "10px" }}>
@@ -61,13 +60,13 @@ const BlogArticle = () => {
                     </Stack>
                 </Box> */}
                 <Box sx={{ width: { xs: "100%", md: "100%" } }}>
-                    <Typography variant='h3' sx={{ textAlign: "center", borderBottom: "1px solid black", borderRadius: "8px" }}>
+                    <Typography variant='h5' sx={{ textAlign: "center", borderBottom: "1px solid black", borderRadius: "8px", background: theme.palette.plainDark.main, color: theme.palette.plainLight.main, }}>
                         {article?.title}
                     </Typography>
                     {/* <hr className='p-1 bg-black' /> */}
-                    <Typography variant='h5' sx={{ textAlign: "center" }}>
+                    {/* <Typography variant='h6' sx={{ textAlign: "center" }}>
                         Summary: {article?.summary}
-                    </Typography>
+                    </Typography> */}
                     {ReactHtmlParser(article?.content)}
                 </Box>
             </Stack>
