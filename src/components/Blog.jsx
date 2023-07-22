@@ -16,7 +16,7 @@ const Blog = ({ article }) => {
             color: theme.palette.plainDark.main
         }}>
             <CardMedia
-                sx={{ height: 200, objectFit: 'cover' }}
+                sx={{ height: 200, objectFit: 'cover', width: "100%" }}
                 image={article?.imageUrl}
                 title={article?.title}
             />

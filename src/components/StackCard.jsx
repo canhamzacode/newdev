@@ -17,11 +17,11 @@ const StackCard = ({ stack, content, img, linkTo }) => {
             flexDirection: "column",
             gap: "25px"
         }}>
-            <img src={img} alt="img" className='w-full  md:w-3/5' />
+            <img src={img} alt="img" className='w-full  md:w-3/5 self-center m-auto' />
             <Typography variant='p' className='mb-3' sx={{ fontSize: "20px", textAlign: "center", color: theme.palette.plainDark.main, }}>
                 {content}
             </Typography>
-            {linkTo && <Link className='w-full'>
+            {linkTo && <Link to="https://youtu.be/UGH19fhO97Y" target='_blank' className='w-full'>
                 <Button className='heroBtn' sx={{ width: "100%" }}>
                     {stack}
                 </Button>

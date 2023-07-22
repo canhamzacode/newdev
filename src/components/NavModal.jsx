@@ -92,16 +92,16 @@ const NavModal = ({ toggle, openNav }) => {
                                 </Typography>
                             </Link>
                         </Box>
-                        <Box>
+                        {/* <Box>
                             <Link to="/resources" onClick={toggle}>
                                 <Typography variant='p'>
                                     Resources
                                 </Typography>
                             </Link>
-                        </Box>
+                        </Box> */}
                     </Stack>
                     <hr />
-                    <Stack sx={{ width: "100%", padding: "15px 25px", display: "grid", gap: "10px" }} >
+                    {/* <Stack sx={{ width: "100%", padding: "15px 25px", display: "grid", gap: "10px" }} >
                         <Box>
                             <Link to="/membership" onClick={toggle}>
                                 <Typography variant='p'>
@@ -110,7 +110,7 @@ const NavModal = ({ toggle, openNav }) => {
                             </Link>
                         </Box>
                     </Stack>
-                    <hr />
+                    <hr /> */}
                     <Stack sx={{ width: "100%", padding: "15px 25px", display: "grid", gap: "10px" }} >
                         <Box>
                             <Link to="/blog" onClick={toggle}>

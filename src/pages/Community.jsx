@@ -9,23 +9,25 @@ const Community = () => {
             <Stack direction={"row"} sx={{
                 display: "grid",
                 gridTemplateColumns: { xs: "1fr", md: "0.8fr 1fr" },
-                gap: "10px"
+                gap: "10px",
+                alignItems: "start"
             }}>
-                <Box sx={{ alignContent: "center", justifyContent: "center", display: { md: "flex", xs: "none" }, flexDirection: "column" }}>
+                <Box sx={{ alignContent: "center", justifyContent: "center", display: { md: "flex", }, flexDirection: "column", alignItems: "center" }}>
                     <Blogs />
-                    <Button className="heroBtn" sx={{
+                    {/* <Button className="heroBtn" sx={{
                         width: { xs: "80%", sm: "40%" },
-                        marginX: "auto"
+                        marginX: "auto",
+                        alignSelf: "center"
                     }}>
                         See More Articles
-                    </Button>
+                    </Button> */}
                 </Box>
                 <Box sx={{
                     marginTop: "30px",
                     width: "100%",
                     padding: { md: "30px" }
                 }}>
-                    <Typography variant='h4' className='mb-3'>
+                    <Typography variant='h4' className='mb-3 text-center'>
                         Featured
                     </Typography><br />
                     <Stories className="mt-4" />

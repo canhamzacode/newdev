@@ -37,7 +37,8 @@ const Story = ({ story }) => {
                     display: "flex",
                     justifyContent: "space-between",
                     alignItems: "start",
-                    flexWrap: "nowrap",
+                    flexWrap: "wrap",
+                    width: "100%"
                 }}
             >
                 <Stack
@@ -53,7 +54,7 @@ const Story = ({ story }) => {
                     <div className="profileImg">
                         <img src={myUserDb?.profileImage || ""} alt="profile" />
                     </div>
-                    <Box className="flex flex-col">
+                    <Box className="flex flex-col w-full">
                         <span className='flex items-center justify-center gap-3 overflow-hidden whitespace-nowrap'>
                             <Link to={`/${myUserDb?.username}`}>
                                 <Typography
@@ -90,14 +91,14 @@ const Story = ({ story }) => {
                         </span>
                     </Box>
                 </Stack>
-                <IconButton
+                {/* <IconButton
                     aria-label="settings"
                     sx={{
                         color: theme.palette.storyText.main
                     }}
                 >
                     <MoreVertIcon />
-                </IconButton>
+                </IconButton> */}
             </Stack>
             <CardContent>
                 <Typography variant='p'>

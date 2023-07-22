@@ -38,7 +38,7 @@ const Blogs = () => {
     const memoizedArticles = useMemo(() => articles, [articles]);
 
     return (
-        <Box className="pt-14" width="100%">
+        <Box className="pt-14" sx={{ width: "100%" }}>
             <Stack
                 direction="row"
                 sx={{ display: "flex", justifyContent: "center", alignItems: "center", flexWrap: "wrap", width: "100%", gap: "20px" }}

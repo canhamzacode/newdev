@@ -20,6 +20,7 @@ import BlogArticle from './pages/BlogArticle'
 import { AuthProvider } from './AuthProvider'
 import MyStory from './pages/MyStory'
 import CreateArticle from './pages/CreateArticle'
+import Chat from './pages/Chat'
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
               <Route path='/membership' element={<Membership />} />
               <Route path='/community' element={<Community />} />
               <Route path='/resources' element={<Resources />} />
+              <Route path='/chat' element={<Chat />} />
               <Route path='/auth' element={<Auth />} />
               <Route path='/stories' element={<Stories />} />
               <Route path='/story/:id' element={<MyStory />} />

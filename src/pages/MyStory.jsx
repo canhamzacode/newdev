@@ -36,18 +36,28 @@ const MyStory = () => {
 
     const getStoryById = async (storyId) => {
         try {
-            const storyDoc = await getDoc(doc(storiesRef, storyId));
+            // Get the document reference for the specified storyId
+            const storyRef = doc(storiesRef, storyId);
 
+            // Fetch the document data using getDoc
+            const storyDoc = await getDoc(storyRef);
+
+            // If the document exists, destructure its data
             if (storyDoc.exists()) {
-                setStory(storyDoc.data());
+                const { storyData, ...otherData } = storyDoc.data();
+                // Set the state with the destructured data
+                setStory({ id: storyDoc.id, ...storyData, ...otherData });
             } else {
+                // If the document doesn't exist, set the state to null
                 setStory(null);
             }
         } catch (error) {
+            // Handle errors and set the state to null in case of an error
             console.error('Error getting story:', error);
             setStory(null);
         }
     };
+
 
     useEffect(() => {
         getStoryById(id);

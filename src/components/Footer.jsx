@@ -10,6 +10,9 @@ import { useTheme } from '@emotion/react';
 import { ThemeContext } from '../ThemeProvider'
 import { AuthContext } from '../AuthProvider';
 import { useNavigate } from 'react-router-dom';
+import ChatIcon from '@mui/icons-material/Chat';
+import GamepadIcon from '@mui/icons-material/Gamepad';
+import DirectionsIcon from '@mui/icons-material/Directions';
 
 
 const Footer = ({ handleOpen }) => {
@@ -61,19 +64,19 @@ const Footer = ({ handleOpen }) => {
                         Add Story
                     </Typography>
                 </div>
-                <Link>
+                <Link to="playground">
                     <div style={paperAlign}>
-                        <CloudDownloadIcon />
+                        <GamepadIcon />
                         <Typography fontSize="10px">
-                            Install
+                            Playground
                         </Typography>
                     </div>
                 </Link>
-                <Link to="/resources">
+                <Link to="/devguide">
                     <div style={paperAlign}>
-                        <ExtensionIcon />
+                        <DirectionsIcon />
                         <Typography fontSize="10px">
-                            Resources
+                            Dev Guide
                         </Typography>
                     </div>
                 </Link>

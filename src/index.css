@@ -122,4 +122,8 @@ textarea.storytext {
     .logo2 {
         visibility: visible;
     }
+
+    .appFooter {
+        padding: 0 5px;
+    }
 }

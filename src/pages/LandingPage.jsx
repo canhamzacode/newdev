@@ -57,7 +57,7 @@ const LandingPage = () => {
                 gap: "10px",
                 alignItems: "start"
             }}>
-                <Box sx={{ alignContent: "center", justifyContent: "center", display: "flex", flexDirection: "column" }}>
+                <Box sx={{ alignContent: "center", justifyContent: "center", display: "flex", flexDirection: "column", width: "100%" }}>
                     <Blogs />
                     <Button className="heroBtn" sx={{
                         width: { xs: "80%", sm: "40%" },

@@ -45,9 +45,9 @@ const NavBar = ({ openNav, toggle }) => {
             <Stack direction={"row"} gap={2} alignItems={"center"} sx={{
             }}>
                 <Stack direction={"row"} gap={{ md: 2, xs: 4 }} alignItems={"center"} sx={{ display: { xs: "none", md: "flex" }, justifyContent: "space-between", }}>
-                    <Paper className='navBtn'>
+                    {/* <Paper className='navBtn'>
                         <CloudDownloadIcon />
-                    </Paper>
+                    </Paper> */}
                     <Link to={"/community"}>
                         <Button className='navBtn'
                             sx={{
@@ -63,7 +63,7 @@ const NavBar = ({ openNav, toggle }) => {
                 </Stack>
 
 
-                <Link to={"/resources"}>
+                {/* <Link to={"/resources"}>
                     <Button sx={{
                         borderRadius: "20px",
                         padding: "10px 20px",
@@ -73,7 +73,7 @@ const NavBar = ({ openNav, toggle }) => {
                     }} >
                         Learn To Code
                     </Button>
-                </Link>
+                </Link> */}
                 {!user && <Link to={"/auth"}>
                     <Button className='navBtn'
                         sx={{
