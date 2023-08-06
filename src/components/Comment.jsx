@@ -48,7 +48,11 @@ const Comment = ({ comment }) => {
                                         fontWeight: "500"
                                     }}
                                 >
-                                    {myUserDb?.username}
+                                    {
+                                        myUserDb?.username.length > 15
+                                            ? (`${myUserDb?.username.slice(0, 15)}..`)
+                                            : `${myUserDb?.username}`
+                                    }
                                 </Typography>
                             </Link>
                             <span>
