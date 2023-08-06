@@ -59,7 +59,7 @@ const BlogArticle = () => {
                         </Box>
                     </Stack>
                 </Box> */}
-                <Box sx={{ width: { xs: "100%", md: "100%" } }}>
+                <Box sx={{ width: { xs: "100%", md: "100%" }, maxWidth: "800px", background: '#fff', marginX: "auto", overflow: "auto", padding: "20px", borderRadius: "8px" }}>
                     <Typography variant='h5' sx={{ textAlign: "center", borderBottom: "1px solid black", borderRadius: "8px", background: theme.palette.plainDark.main, color: theme.palette.plainLight.main, }}>
                         {article?.title}
                     </Typography>

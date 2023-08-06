@@ -47,7 +47,7 @@ const Story = ({ story }) => {
                         display: "flex",
                         alignItems: "center",
                         gap: "10px",
-                        justifyContent: "space-between"
+                        justifyContent: "space-between",
                     }}
                 >
                     {/* <Avatar /> */}
@@ -64,7 +64,12 @@ const Story = ({ story }) => {
                                         fontWeight: "500"
                                     }}
                                 >
-                                    {myUserDb?.username}
+                                    {
+                                        myUserDb?.username.length > 15
+                                            ? (`${myUserDb?.username.slice(0, 15)}..`)
+                                            : `${myUserDb?.username}`
+                                    }
+
                                 </Typography>
                             </Link>
                             <span>
