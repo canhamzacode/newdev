@@ -3,6 +3,9 @@ import React from 'react'
 import DiamondIcon from '@mui/icons-material/Diamond';
 import ShareIcon from '@mui/icons-material/Share';
 import AddIcon from '@mui/icons-material/Add';
+import EmailIcon from '@mui/icons-material/Email';
+import { Email } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 
 const ProfileCard = ({ username, count, profileImage, currentUserId, authorId, handleOpen }) => {
     const theme = useTheme();
@@ -54,6 +57,15 @@ const ProfileCard = ({ username, count, profileImage, currentUserId, authorId, h
                         color: theme.palette.storyText.main,
                     }} />
                 </IconButton>
+                {authorId != currentUserId ? <Link to={`/message/${authorId}`}>
+                    <IconButton>
+                        <Email sx={{
+                            background: theme.palette.story.main,
+                            color: theme.palette.storyText.main,
+                        }} />
+                    </IconButton>
+                </Link> : ""}
+
             </CardActions>
         </Card >
     )

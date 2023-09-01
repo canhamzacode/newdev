@@ -1,17 +1,17 @@
 import React, { useState, useContext } from 'react'
 import { Outlet } from 'react-router-dom'
-import NavBar from './components/NavBar'
+import NavBar from '../components/NavBar'
 import { Box, Button, } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add';
-import Footer from './components/Footer'
-import MyModal from './components/MyModal';
-import NavModal from './components/NavModal';
-import { ThemeContext } from './ThemeProvider'
+import Footer from '../components/Footer'
+import MyModal from '../components/MyModal';
+import NavModal from '../components/NavModal';
+import { ThemeContext } from '../ThemeProvider'
 import { useTheme } from '@mui/material/styles';
-import { AuthContext } from './AuthProvider';
-import EditProfileModal from './components/EditProfileModal';
-import { useToggle } from './hooks/useToggle';
-import { useDate } from './hooks/useDate';
+import { AuthContext } from '../AuthProvider';
+import EditProfileModal from '../components/EditProfileModal';
+import { useToggle } from '../hooks/useToggle';
+import { useDate } from '../hooks/useDate';
 
 const Layout = () => {
     const { user } = useContext(AuthContext);

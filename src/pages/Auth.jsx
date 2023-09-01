@@ -59,6 +59,7 @@ const Auth = ({ loading }) => {
                         storyCount: 0,
                         followers: 0,
                         following: 0,
+                        role: "user",
                     };
 
                     // Create the user schema in Firestore
