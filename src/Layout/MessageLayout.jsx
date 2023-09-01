@@ -1,12 +1,12 @@
 import React, { useState, useContext } from 'react'
-import { Outlet } from 'react-router-dom'
-import NavBar from '../components/NavBar'
-import { Box, Button, } from '@mui/material'
+import { Link, Outlet } from 'react-router-dom'
+import { Box, Button, Card, Stack, Typography, } from '@mui/material'
 import NavModal from '../components/NavModal';
 import { useTheme } from '@mui/material/styles';
 import { AuthContext } from '../AuthProvider';
 import { useToggle } from '../hooks/useToggle';
 import SendMessage from '../components/SendMessage';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const MessageLayout = () => {
     const { user } = useContext(AuthContext);
@@ -17,16 +17,14 @@ const MessageLayout = () => {
         <Box className="p-4" sx={{
             background: theme.palette.primary.main,
             color: theme.palette.text.main,
-            minHeight: "100vh",
+            height: "100vh",
+            display: "grid",
+            overflowY: "hidden",
+            gridTemplateColumns: "0.4fr 1fr ",
+            alignItems: "start"
         }} >
-            <NavBar openNav={openNav} toggle={toggle} />
-            <br />
-            <br />
             <Outlet />
-            <br />
-            <br />
-            <SendMessage />
-            <NavModal openNav={openNav} toggle={toggle} />
+
         </Box>
     )
 }
