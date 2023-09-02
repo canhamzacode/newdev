@@ -8,6 +8,7 @@ import Sidebar from '../components/Sidebar';
 import NavBar from '../components/NavBar';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useToggle } from '../hooks/useToggle';
+import MessageCard from '../components/MessageCard';
 const paperAlign = {
     alignItems: "center",
     display: "flex",
@@ -22,7 +23,7 @@ const Message = () => {
     return (
         <>
             <Sidebar stateValue={stateValue} toggle={toggle} />
-            <Box sx={{ paddingBottom: "0", width: "100%", height: "100%", overflowY: "auto", }}>
+            <Box sx={{ padding: "20px", paddingBottom: "0", width: "100%", height: "100%", overflowY: "auto", position: "" }}>
                 <Box sx={{
                     padding: "15px",
                     position: "fixed",
@@ -43,10 +44,10 @@ const Message = () => {
                         justifyContent: "space-between",
                         left: "0",
                         top: "0",
-                    }} className="z-[15]">
+                    }}>
                         <Box className="flex gap-2">
                             <Button onClick={toggle}>
-                                <MenuIcon sx={{ color: "#000", fontSize: "35px" }} />
+                                <MenuIcon sx={{ color: "#000", fontSize: "35px", }} />
                             </Button>
                             <Box sx={{
                                 fontSize: "30px",
@@ -82,9 +83,9 @@ const Message = () => {
                         display: { md: "flex", xs: "none" },
                         alignItems: "center",
                         justifyContent: "space-between",
-                    }} className="z-[15]">
+                    }}>
                         <Box sx={{ display: "flex", gap: "10px" }}>
-                            <Button onClick={toggle} sx={{ display: { md: "flex", xs: "none" } }}>
+                            <Button onClick={toggle} sx={{ display: { md: "none", xs: "flex" } }}>
                                 <MenuIcon sx={{ color: "#000", fontSize: "35px" }} />
                             </Button>
                             <Box sx={{
@@ -103,50 +104,26 @@ const Message = () => {
                                     <AccountCircleIcon sx={{ width: "100%", height: "100%", background: "#000", borderRadius: "50%" }} />
                                 </div>
                             </Button>
-                            <Typography variant='h5'>Abdullah</Typography>
                         </Box>
                     </Box>
                     <Box sx={{
-                        width: "100%",
                         height: "100%",
+                        width: "100%",
+                        overflowY: "auto",
+                        background: "red",
                         overflow: "auto",
-                        padding: "20px",
-                        paddingTop: {
-                            md: "10px",
-                            xs: "70px"
-                        },
-                        display: "flex", // Change display property to "flex"
-                        flexDirection: "column", // Set flexDirection to "column"
+                        paddingX: "20px",
                         gap: "10px",
-                        maxHeight: "100%", // Set a maxHeight
-                        overflowY: "auto" // Add overflowY property
+                        paddingY: { xs: "70px", md: "20px" }
                     }}>
-                        <Card sx={{
-                            background: "#fff",
-                            width: "70%",
-                            padding: "15px",
-                            maxWidth: "450px",
-                            display: "flex",
-                            alignItems: "start",
-                            alignSelf: "flex-end",
-                            justifySelf: "flex-end",
-                            flexDirection: "row"
-                        }}>
-                            <Box>
-                                Heello I Love You Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ut consequuntur autem voluptatum doloremque, esse numquam, error iure nemo ipsum, tenetur a eveniet? Voluptates dolor commodi sint pariatur itaque optio.
-                            </Box>
-                            <Button>
-                                <div className="profileImg">
-                                    <AccountCircleIcon sx={{ width: "100%", height: "100%", background: "#000", borderRadius: "50%" }} />
-                                </div>
-                            </Button>
-                        </Card>
-                        {/* Add more cards or content here */}
+                        <MessageCard />
+                        <MessageCard />
+                        <MessageCard />
+                        <MessageCard />
                     </Box>
-
                     <SendMessage />
-                </Stack >
-            </Box >
+                </Stack>
+            </Box>
         </>
     )
 }
