@@ -22,7 +22,7 @@ const Message = () => {
     return (
         <>
             <Sidebar stateValue={stateValue} toggle={toggle} />
-            <Box sx={{ padding: "20px", width: "100%", height: "100%", overflowY: "auto", position: "relative" }}>
+            <Box sx={{ paddingBottom: "0", width: "100%", height: "100%", overflowY: "auto", }}>
                 <Box sx={{
                     padding: "15px",
                     position: "fixed",
@@ -35,7 +35,7 @@ const Message = () => {
                         position: "fixed",
                         width: "100%", // Adjust the maximum width as needed
                         overflow: "hidden", // Hide content that overflows
-                        padding: "15px",
+                        padding: "20px",
                         background: "#fff",
                         display: { md: "none", xs: "flex" },
                         alignItems: "center",
@@ -64,99 +64,89 @@ const Message = () => {
                                     <AccountCircleIcon sx={{ width: "100%", height: "100%", background: "#000", borderRadius: "50%" }} />
                                 </div>
                             </Button>
-                            <Typography variant='h5'>Abdullah</Typography>
                         </Box>
                     </Box>
-
-                </Box><br /><br /><br />
+                </Box>
                 <Stack direction={"column"} sx={{
                     display: "grid",
                     alignItems: "center",
                     gap: "10px",
                     width: "100%",
+                    gridTemplateRows: { md: "70px 1fr 70px 10px", xs: "1fr 50px" },
+                    height: "100%",
+                    overflow: "hidden"
                 }}>
-                    <Card sx={{
+                    <Box sx={{
+                        padding: "10px",
                         background: "#fff",
-                        width: "70%",
-                        padding: "15px",
-                        maxWidth: "450px",
-                        display: "flex",
-                        alignItems: "start",
-                        alignSelf: "flex-end",
-                        justifySelf: "flex-end",
-                        flexDirection: "row"
-                    }}>
-                        <Box>
-                            Heello I Love You Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ut consequuntur autem voluptatum doloremque, esse numquam, error iure nemo ipsum, tenetur a eveniet? Voluptates dolor commodi sint pariatur itaque optio.
+                        display: { md: "flex", xs: "none" },
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                    }} className="z-[15]">
+                        <Box sx={{ display: "flex", gap: "10px" }}>
+                            <Button onClick={toggle} sx={{ display: { md: "flex", xs: "none" } }}>
+                                <MenuIcon sx={{ color: "#000", fontSize: "35px" }} />
+                            </Button>
+                            <Box sx={{
+                                fontSize: "30px",
+                                fontWeight: "800",
+                                color: theme.palette.plainDark.main,
+                            }} className="logo" >
+                                <Link to={"/"} >
+                                    Tech Tribe
+                                </Link>
+                            </Box>
                         </Box>
-                        <Button>
-                            <div className="profileImg">
-                                <AccountCircleIcon sx={{ width: "100%", height: "100%", background: "#000", borderRadius: "50%" }} />
-                            </div>
-                        </Button>
-                    </Card>
-                    <Card sx={{
-                        background: "#fff",
-                        width: "70%",
-                        padding: "15px",
-                        maxWidth: "450px",
-                        display: "flex",
-                        alignItems: "start",
-                        alignSelf: "flex-end",
-                        justifySelf: "flex-start",
-                        flexDirection: "row-reverse"
-                    }}>
-                        <Box>
-                            Heello I Love You Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ut consequuntur autem voluptatum doloremque, esse numquam, error iure nemo ipsum, tenetur a eveniet? Voluptates dolor commodi sint pariatur itaque optio.
+                        <Box className="flex items-center">
+                            <Button>
+                                <div className="profileImg">
+                                    <AccountCircleIcon sx={{ width: "100%", height: "100%", background: "#000", borderRadius: "50%" }} />
+                                </div>
+                            </Button>
+                            <Typography variant='h5'>Abdullah</Typography>
                         </Box>
-                        <Button>
-                            <div className="profileImg">
-                                <AccountCircleIcon sx={{ width: "100%", height: "100%", background: "#000", borderRadius: "50%" }} />
-                            </div>
-                        </Button>
-                    </Card>
-                    <Card sx={{
-                        background: "#fff",
-                        width: "70%",
-                        padding: "15px",
-                        maxWidth: "450px",
-                        display: "flex",
-                        alignItems: "start",
-                        alignSelf: "flex-end",
-                        justifySelf: "flex-start",
-                        flexDirection: "row-reverse"
+                    </Box>
+                    <Box sx={{
+                        width: "100%",
+                        height: "100%",
+                        overflow: "auto",
+                        padding: "20px",
+                        paddingTop: {
+                            md: "10px",
+                            xs: "70px"
+                        },
+                        display: "flex", // Change display property to "flex"
+                        flexDirection: "column", // Set flexDirection to "column"
+                        gap: "10px",
+                        maxHeight: "100%", // Set a maxHeight
+                        overflowY: "auto" // Add overflowY property
                     }}>
-                        <Box>
-                            Heello I Love You Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ut consequuntur autem voluptatum doloremque, esse numquam, error iure nemo ipsum, tenetur a eveniet? Voluptates dolor commodi sint pariatur itaque optio.
-                        </Box>
-                        <Button>
-                            <div className="profileImg">
-                                <AccountCircleIcon sx={{ width: "100%", height: "100%", background: "#000", borderRadius: "50%" }} />
-                            </div>
-                        </Button>
-                    </Card>
-                    <Card sx={{
-                        background: "#fff",
-                        width: "70%",
-                        padding: "15px",
-                        maxWidth: "450px",
-                        display: "flex",
-                        alignItems: "start",
-                        alignSelf: "flex-end",
-                        justifySelf: "flex-start",
-                        flexDirection: "row-reverse"
-                    }}>
-                        <Box>
-                            Heello I Love You Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ut consequuntur autem voluptatum doloremque, esse numquam, error iure nemo ipsum, tenetur a eveniet? Voluptates dolor commodi sint pariatur itaque optio.
-                        </Box>
-                        <Button>
-                            <div className="profileImg">
-                                <AccountCircleIcon sx={{ width: "100%", height: "100%", background: "#000", borderRadius: "50%" }} />
-                            </div>
-                        </Button>
-                    </Card>
-                </Stack>
-            </Box>
+                        <Card sx={{
+                            background: "#fff",
+                            width: "70%",
+                            padding: "15px",
+                            maxWidth: "450px",
+                            display: "flex",
+                            alignItems: "start",
+                            alignSelf: "flex-end",
+                            justifySelf: "flex-end",
+                            flexDirection: "row"
+                        }}>
+                            <Box>
+                                Heello I Love You Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ut consequuntur autem voluptatum doloremque, esse numquam, error iure nemo ipsum, tenetur a eveniet? Voluptates dolor commodi sint pariatur itaque optio.
+                            </Box>
+                            <Button>
+                                <div className="profileImg">
+                                    <AccountCircleIcon sx={{ width: "100%", height: "100%", background: "#000", borderRadius: "50%" }} />
+                                </div>
+                            </Button>
+                        </Card>
+                        {/* Add more cards or content here */}
+                    </Box>
+
+                    <SendMessage />
+                </Stack >
+            </Box >
         </>
     )
 }

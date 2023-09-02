@@ -22,8 +22,6 @@ const MessageLayout = () => {
             overflowY: "hidden",
             gridTemplateColumns: { md: "0.4fr 1.2fr ", xs: "1fr" },
             alignItems: "start",
-            gridTemplateAreas: `"side header"
-                                "side main"`,
         }} >
             <Outlet />
 

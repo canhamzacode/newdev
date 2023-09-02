@@ -8,7 +8,7 @@ const SendMessage = () => {
         <Box sx={{
             width: "100%", padding: "20px",
             background: theme.palette.primary.main,
-            color: theme.palette.plainDark.main, bottom: "0", position: "fixed", left: "50%", zIndex: "5", transform: "translateX(-50%)"
+            color: theme.palette.plainDark.main,
         }}>
             <form className='w-full flex justify-between'>
                 <input type="text" className='w-[90%] border-none p-2 outline-none' placeholder='Message...' />
