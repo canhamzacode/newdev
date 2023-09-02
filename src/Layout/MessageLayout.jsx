@@ -20,8 +20,10 @@ const MessageLayout = () => {
             height: "100vh",
             display: "grid",
             overflowY: "hidden",
-            gridTemplateColumns: "0.4fr 1fr ",
-            alignItems: "start"
+            gridTemplateColumns: { md: "0.4fr 1.2fr ", xs: "1fr" },
+            alignItems: "start",
+            gridTemplateAreas: `"side header"
+                                "side main"`,
         }} >
             <Outlet />
 
